@@ -1,35 +1,12 @@
 package com.example.controlegastos.view
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.example.controlegastos.data.AppDatabase
-import com.example.controlegastos.data.GastoRepository
 import com.example.controlegastos.viewmodel.GastoViewModel
-import com.example.controlegastos.viewmodel.GastoViewModelFactory
-
-class RelatorioActivity : ComponentActivity() {
-    private val viewModel: GastoViewModel by viewModels {
-        GastoViewModelFactory(GastoRepository(AppDatabase.getDatabase(this).gastoDao()))
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            RelatorioScreen(viewModel) {
-                finish()
-            }
-        }
-    }
-}
 
 @Composable
 fun RelatorioScreen(viewModel: GastoViewModel, onVoltar: () -> Unit) {
@@ -48,13 +25,23 @@ fun RelatorioScreen(viewModel: GastoViewModel, onVoltar: () -> Unit) {
             Text("Nenhum gasto encontrado.")
         } else {
             totaisPorCategoria.forEach {
-                Text("${it.categoria}: R$ %.2f".format(it.total))
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+                ) {
+                    Column(modifier = Modifier.padding(12.dp)) {
+                        Text(it.categoria, style = MaterialTheme.typography.titleMedium)
+                        Text("Total: R$ %.2f".format(it.total), style = MaterialTheme.typography.bodyLarge)
+                    }
+                }
             }
         }
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        Button(onClick = { onVoltar() }, modifier = Modifier.fillMaxWidth()) {
+        Button(onClick = onVoltar, modifier = Modifier.fillMaxWidth()) {
             Text("Voltar")
         }
     }

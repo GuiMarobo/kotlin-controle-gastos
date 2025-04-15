@@ -13,8 +13,8 @@ interface GastoDao {
     suspend fun inserir(gasto: Gasto)
 
     @Query("SELECT * FROM gastos ORDER BY data DESC")
-    fun listarTodos(): Flow<List<Gasto>>
+    fun listarTodos(): Flow<List<Gasto>> // Flow de gastos
 
     @Query("SELECT categoria, SUM(valor) as total FROM gastos GROUP BY categoria")
-    fun totaisPorCategoria(): Flow<List<CategoriaTotal>>
+    fun totaisPorCategoria(): Flow<List<CategoriaTotal>> // Flow de totais por categoria
 }

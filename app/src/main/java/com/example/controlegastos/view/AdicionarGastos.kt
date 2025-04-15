@@ -26,7 +26,6 @@ fun AdicionarGastosScreen(
         verticalArrangement = Arrangement.Center
     ) {
         Text("Adicionar Gasto", style = MaterialTheme.typography.headlineLarge)
-
         Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
@@ -57,12 +56,20 @@ fun AdicionarGastosScreen(
                             data = System.currentTimeMillis()
                         )
                     )
-                    navController.popBackStack()
                 }
             },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Adicionar")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        OutlinedButton(
+            onClick = { navController.popBackStack() },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Voltar")
         }
     }
 }
