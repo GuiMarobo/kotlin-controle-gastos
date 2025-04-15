@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class GastoViewModel(private val repository: GastoRepository) : ViewModel() {
 
-    // StateFlows para manter os dados reativos
+    // StateFlows - Dados reativos
     private val _gastos = MutableStateFlow<List<Gasto>>(emptyList())
     val gastos: StateFlow<List<Gasto>> = _gastos
 
@@ -24,7 +24,7 @@ class GastoViewModel(private val repository: GastoRepository) : ViewModel() {
         carregarTotaisPorCategoria()
     }
 
-    // Coleta os dados de gastos de forma reativa
+    // gastos de forma reativa
     private fun carregarGastos() {
         viewModelScope.launch {
             repository.listarTodos().collect {
@@ -33,7 +33,7 @@ class GastoViewModel(private val repository: GastoRepository) : ViewModel() {
         }
     }
 
-    // Coleta os totais por categoria de forma reativa
+    // totais por categoria de forma reativa
     private fun carregarTotaisPorCategoria() {
         viewModelScope.launch {
             repository.totaisPorCategoria().collect {

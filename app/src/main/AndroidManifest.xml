@@ -12,7 +12,7 @@
             android:theme="@style/Theme.ControleGastos"
             tools:targetApi="31">
 
-        <!-- Main Activity -->
+        <!--MainActivity.kt-->
         <activity
                 android:name=".view.MainActivity"
                 android:exported="true"
@@ -24,14 +24,14 @@
             </intent-filter>
         </activity>
 
-        <!-- Adicionar Gastos -->
+        <!--AdicionarGastos.kt-->
         <activity
                 android:name=".view.AdicionarGastosActivity"
                 android:exported="true"
                 android:label="Adicionar Gasto"
                 android:theme="@style/Theme.ControleGastos" />
 
-        <!-- Relatório -->
+        <!--Relatorio.kt-->
         <activity
                 android:name=".view.RelatorioActivity"
                 android:exported="false"

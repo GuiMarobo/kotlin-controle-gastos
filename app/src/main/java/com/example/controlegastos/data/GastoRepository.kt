@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 class GastoRepository(private val dao: GastoDao) {
     suspend fun adicionarGasto(gasto: Gasto) = dao.inserir(gasto)
 
-    fun listarTodos(): Flow<List<Gasto>> = dao.listarTodos() // Retorna Flow de Gasto
+    fun listarTodos(): Flow<List<Gasto>> = dao.listarTodos()
 
-    fun totaisPorCategoria(): Flow<List<CategoriaTotal>> = dao.totaisPorCategoria() // Retorna Flow de totais por categoria
+    fun totaisPorCategoria(): Flow<List<CategoriaTotal>> = dao.totaisPorCategoria()
 }
