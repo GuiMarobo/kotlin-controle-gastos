@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose") version "2.1.0"
+    id("kotlin-kapt")
 }
 
 android {
@@ -70,7 +72,7 @@ android {
 dependencies {
 
     // Dependência do Kotlin
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.0")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.1.0")
 
     // Dependência de componentes essenciais do Android
     implementation("androidx.core:core-ktx:1.15.0")
@@ -88,7 +90,12 @@ dependencies {
     implementation("androidx.compose.material3:material3")
 
     // Dependência para navegação entre telas (se for usar navegação no futuro)
-    implementation("androidx.navigation:navigation-compose:2.5.3")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // Room
+    implementation("androidx.room:room-runtime:2.7.0")
+    kapt("androidx.room:room-compiler:2.7.0")
+    implementation("androidx.room:room-ktx:2.7.0")
 
     // Testes
     testImplementation("junit:junit:4.13.2")

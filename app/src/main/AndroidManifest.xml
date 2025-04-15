@@ -12,24 +12,31 @@
             android:theme="@style/Theme.ControleGastos"
             tools:targetApi="31">
 
-        <!-- Registro da MainActivity -->
+        <!-- Main Activity -->
         <activity
-                android:name=".MainActivity"
+                android:name=".view.MainActivity"
                 android:exported="true"
                 android:label="@string/app_name"
                 android:theme="@style/Theme.ControleGastos">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- Registro da AdicionarGastosActivity -->
+        <!-- Adicionar Gastos -->
         <activity
-                android:name=".AdicionarGastosActivity"
+                android:name=".view.AdicionarGastosActivity"
                 android:exported="true"
                 android:label="Adicionar Gasto"
-                android:theme="@style/Theme.ControleGastos"/>
+                android:theme="@style/Theme.ControleGastos" />
 
+        <!-- Relatório -->
+        <activity
+                android:name=".view.RelatorioActivity"
+                android:exported="false"
+                android:label="Relatório"
+                android:theme="@style/Theme.ControleGastos" />
     </application>
+
 </manifest>
